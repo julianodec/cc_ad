@@ -17,11 +17,11 @@ This application should fulfill every requirement posted, including the optional
 
 To run the application, following these instructions
 
-1. Download and install Maven 3 from [https://maven.apache.org/download.cgi (https://maven.apache.org/download.cgi)]
+1. Download and install Maven 3 from [https://maven.apache.org/download.cgi]
 2. Clone this GitHub repository
 3. Run this command: `$MAVEN_HOME/bin/mvn clean install jetty:run`
 
-Please note that the last command will start the process of pulling down all dependencies, which may take several minutes.  Once complete you will see this line in your console: `[INFO] Started Jetty Server`.  At this point you may start a web browser and access [http://localhost:8080 (http://localhost:8080)], and you should see the following screen:
+Please note that the last command will start the process of pulling down all dependencies, which may take several minutes.  Once complete you will see this line in your console: `[INFO] Started Jetty Server`.  At this point you may start a web browser and access [http://localhost:8080], and you should see the following screen:
 
 ![Everyone Loves Ads! Landing Page](https://cloud.githubusercontent.com/assets/21227450/18132956/bc7b4e98-6f66-11e6-87de-0f2062ded602.png "Everyone Loves Ads! Landing Page")
 
