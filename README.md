@@ -5,9 +5,11 @@ Everyone Loves Ads! is a simple ad server written by Juliano DeCarvalho.  It was
 * Jersey 2.32.2 for RESTful web services
 * Spring 3.2.3 for CDI, persistence repository, and transactional support
 * Moxy for JSON and XML marshaling
+* ReactJS for the user interface
 * Junit 4 for unit testing
 * MongoDB (embedded) for persistence
 * Jetty (embedded) as the application server
+* Maven 3 for the build process
 
 This application should fulfill every requirement posted, including the optional requirements around scalability, and allowing and listing multiple campaigns per partner.
 
@@ -15,11 +17,11 @@ This application should fulfill every requirement posted, including the optional
 
 To run the application, following these instructions
 
-1. Download and install Maven 3 from [https://maven.apache.org/download.cgi]
+1. Download and install Maven 3 from [https://maven.apache.org/download.cgi (https://maven.apache.org/download.cgi)]
 2. Clone this GitHub repository
 3. Run this command: `$MAVEN_HOME/bin/mvn clean install jetty:run`
 
-Please note that the last command will start the process of pulling down all dependencies, which may take several minutes.  Once complete you will see this line in your console: `[INFO] Started Jetty Server`.  At this point you may start a web browser and access [http://localhost:8080], and you should see the following screen:
+Please note that the last command will start the process of pulling down all dependencies, which may take several minutes.  Once complete you will see this line in your console: `[INFO] Started Jetty Server`.  At this point you may start a web browser and access [http://localhost:8080 (http://localhost:8080)], and you should see the following screen:
 
 ![Everyone Loves Ads! Landing Page](https://cloud.githubusercontent.com/assets/21227450/18132956/bc7b4e98-6f66-11e6-87de-0f2062ded602.png "Everyone Loves Ads! Landing Page")
 
@@ -41,4 +43,6 @@ MongoDB was chosen over a SQL database due to its out-of-the-box ability to supp
 
 ## Testing
 
-Tests are run as part of the build process, using JUnit 4.  Please note that MongoDB is instantiated during the tests, and may force the operating system to request that the user allow the process to run.  In Windows 8, that screen looks something like this: ![Windows 8 Firewall Exclusion](https://cloud.githubusercontent.com/assets/21227450/18132957/bc884cf6-6f66-11e6-87e4-62bcd89521d7.png "Windows 8 Firewall Exclusion")
+Tests are run as part of the build process, using JUnit 4.  Please note that MongoDB is instantiated during the tests, and may force the operating system to request that the user allow the process to run.  In Windows 8, that screen looks something like this:
+
+![Windows 8 Firewall Exclusion](https://cloud.githubusercontent.com/assets/21227450/18132957/bc884cf6-6f66-11e6-87e4-62bcd89521d7.png "Windows 8 Firewall Exclusion")
