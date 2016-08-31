@@ -21,7 +21,7 @@ To run the application, following these instructions
 
 Please note that the last command will start the process of pulling down all dependencies, which may take several minutes.  Once complete you will see this line in your console: `[INFO] Started Jetty Server`.  At this point you may start a web browser and access [http://localhost:8080], and you should see the following screen:
 
-![Everyone Loves Ads! Landing Page](https://github.com/julianodec/cc_ad/tree/master/dist/imgs/app.png "Everyone Loves Ads! Landing Page")
+![Everyone Loves Ads! Landing Page](https://cloud.githubusercontent.com/assets/21227450/18132956/bc7b4e98-6f66-11e6-87de-0f2062ded602.png "Everyone Loves Ads! Landing Page")
 
 The user interface is separated into 4 pieces.  The first piece allows you to select a partner from a pick-list.  There are 2 partners currently hardcoded into the app, but more could easily be added in the future dynamically from the backend.
 
@@ -41,4 +41,4 @@ MongoDB was chosen over a SQL database due to its out-of-the-box ability to supp
 
 ## Testing
 
-Tests are run as part of the build process, using JUnit 4.  Please note that MongoDB is instantiated during the tests, and may force the operating system to request that the user allow the process to run.  In Windows 8, that screen looks something like this: ![Windows 8 Firewall Exclusion](https://github.com/julianodec/cc_ad/tree/master/dist/imgs/windows8.png "Windows 8 Firewall Exclusion")
+Tests are run as part of the build process, using JUnit 4.  Please note that MongoDB is instantiated during the tests, and may force the operating system to request that the user allow the process to run.  In Windows 8, that screen looks something like this: ![Windows 8 Firewall Exclusion](https://cloud.githubusercontent.com/assets/21227450/18132957/bc884cf6-6f66-11e6-87e4-62bcd89521d7.png "Windows 8 Firewall Exclusion")
