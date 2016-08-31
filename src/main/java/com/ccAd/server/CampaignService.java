@@ -1,7 +1,5 @@
 package com.ccAd.server;
 
-import java.util.Collection;
-
 import com.ccAd.common.Campaign;
 import com.ccAd.common.exception.ExistingActiveCampaignException;
 import com.ccAd.common.exception.NoActiveCampaignException;
@@ -14,6 +12,6 @@ public interface CampaignService {
 
 	Campaign getActiveCampaign(long partnerId) throws NoActiveCampaignException;
 
-	Collection<Campaign> getCampaigns(long partnerId);
+	Iterable<Campaign> getCampaigns(long partnerId);
 
 }

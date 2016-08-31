@@ -1,7 +1,5 @@
 package com.ccAd.ui;
 
-import java.util.Collection;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -40,7 +38,7 @@ public class AdResource {
 
 	@GET
 	@Path("all/{partnerId}")
-	public Collection<Campaign> getCampaigns(@PathParam("partnerId") long partnerId) {
+	public Iterable<Campaign> getCampaigns(@PathParam("partnerId") long partnerId) {
 		return campaignService.getCampaigns(partnerId);
 	}
 

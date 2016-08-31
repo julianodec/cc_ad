@@ -1,7 +1,5 @@
 package com.ccAd.server.impl;
 
-import java.util.Collection;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -10,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ccAd.common.Campaign;
 import com.ccAd.common.exception.ExistingActiveCampaignException;
@@ -38,9 +36,6 @@ import de.flapdoodle.embed.process.runtime.Network;
  */
 @Service
 public class CampaignServiceImpl implements CampaignService, ApplicationContextAware {
-
-	@Autowired
-	private MongoOperations mongoOps;
 
 	/**
 	 * Spring repository in charge of dealing with MongoDB operations.
@@ -104,6 +99,7 @@ public class CampaignServiceImpl implements CampaignService, ApplicationContextA
 	 * one already exists for the specified partner.
 	 */
 	@Override
+	@Transactional
 	public void addCampaign(Campaign newCampaign) throws ExistingActiveCampaignException {
 		if (newCampaign.isActive() && getActiveCampaign(newCampaign.getPartnerId(), false) != null) {
 			throw new ExistingActiveCampaignException(
@@ -114,7 +110,7 @@ public class CampaignServiceImpl implements CampaignService, ApplicationContextA
 		newCampaign.setId(null);
 		newCampaign.setLastActivationDate(System.currentTimeMillis());
 
-		mongoOps.save(newCampaign);
+		campaignRepo.save(newCampaign);
 	}
 
 	/**
@@ -122,19 +118,19 @@ public class CampaignServiceImpl implements CampaignService, ApplicationContextA
 	 * it is deactivated first.
 	 */
 	@Override
+	@Transactional
 	public Campaign activateCampaign(String campaignId) {
-		Query query = new Query(Criteria.where("_id").is(campaignId));
-		Campaign campaign = mongoOps.findOne(query, Campaign.class);
+		Campaign campaign = campaignRepo.findById(campaignId);
 		campaign.setActive(true);
 		campaign.setLastActivationDate(System.currentTimeMillis());
 
 		Campaign oldActive = getActiveCampaign(campaign.getPartnerId(), false);
 		if (oldActive != null) {
 			oldActive.setActive(false);
-			mongoOps.save(oldActive);
+			campaignRepo.save(oldActive);
 		}
 
-		mongoOps.save(campaign);
+		campaignRepo.save(campaign);
 
 		return campaign;
 	}
@@ -157,7 +153,7 @@ public class CampaignServiceImpl implements CampaignService, ApplicationContextA
 				+ (campaign.getDurationInSeconds() * 1000)) {
 			if (campaign != null) {
 				campaign.setActive(false);
-				mongoOps.save(campaign);
+				campaignRepo.save(campaign);
 			}
 
 			if (errorOnMissing) {
@@ -173,10 +169,10 @@ public class CampaignServiceImpl implements CampaignService, ApplicationContextA
 	 * its active state.
 	 */
 	@Override
-	public Collection<Campaign> getCampaigns(long partnerId) {
+	public Iterable<Campaign> getCampaigns(long partnerId) {
 		Query query = new Query(Criteria.where("partnerId").is(partnerId));
 
-		return mongoOps.find(query, Campaign.class);
+		return campaignRepo.findByPartnerId(partnerId);
 	}
 
 	/**
