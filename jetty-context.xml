@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Speed up deployment as per http://www.benoitschweblin.com/2013/03/run-jetty-in-maven-life-cycle.html -->
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+	<Call name="setAttribute">
+		<Arg>org.eclipse.jetty.server.webapp.WebInfIncludeJarPattern</Arg>
+		<Arg>^$</Arg>
+	</Call>
+</Configure>

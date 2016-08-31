@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd">
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+	<New id="DS" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>
+			<Ref refid="wac" />
+		</Arg>
+		<Arg>jdbc/DS</Arg>
+		<Arg>
+			<New class="org.hsqldb.jdbc.JDBCDataSource">
+				<Set name="DatabaseName">mem:jettyCluster</Set>
+				<Set name="User">ccAd</Set>
+				<Set name="Password">ccAd</Set>
+			</New>
+		</Arg>
+	</New>
+
+	<Set name="sessionIdManager">
+		<New id="jdbcidmgr" class="org.eclipse.jetty.server.session.JDBCSessionIdManager">
+			<Arg>
+				<Ref id="Server" />
+			</Arg>
+			<Set name="workerName">fred</Set>
+			<Set name="DatasourceName">jdbc/DS</Set>
+			<Set name="scavengeInterval">60</Set>
+		</New>
+	</Set>
+	<Call name="setAttribute">
+		<Arg>jdbcIdMgr</Arg>
+		<Arg>
+			<Ref id="jdbcidmgr" />
+		</Arg>
+	</Call>
+
+</Configure>

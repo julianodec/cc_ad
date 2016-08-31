@@ -1,0 +1,62 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: #cc0000; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#990000, #cc0000); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#990000, #cc0000); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#990000, #cc0000); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#990000, #cc0000); /* Standard syntax */
+}
+
+.header {
+	color: white;
+}
+
+.start {
+	font-size: larger;
+	font-weight: bold;
+}
+
+.panel {
+	border: 1px solid black;
+	border-radius: 5px;
+    margin: 10px;
+	padding: 0 10px 10px 10px;
+	background-color: white;
+}
+
+label {
+	padding: 0 5px 0 0;
+}
+
+label, textarea {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.campaigns li span {
+	padding: 0 10px 0 0;
+}
+
+.campaigns li span label {
+	font-weight: bold;
+}
+
+.odd {
+	background-color: white;
+}
+
+.active {
+	font-weight: bold;
+	color: darkred;
+}
+
+.field {
+	padding: 5px 0 5px 0;
+}
